@@ -11,6 +11,7 @@ from app.components.navbar import navbar
 
 # Import Langchain interface  and use base chain
 from app.utils.watsonxga import WatsonxLangchainLLM
+from app.utils.watsonxworkbench import WatsonxWorkbenchLangchainLLM
 from app.utils.vectorstore import VectorStore
 from app.utils.prompts import ragprompt
 
@@ -21,13 +22,27 @@ import os
 
 os.environ["TOKENIZERS_PARALLELISM"] = "False"
 
-llm = WatsonxLangchainLLM(
-    model_id=ModelTypes.LLAMA_2_70B_CHAT.value,
-    generate_params={
-        GenParams.DECODING_METHOD: "greedy",
-        GenParams.MAX_NEW_TOKENS: 200,
-    },
-).from_pretrained()
+config = rx.config.get_config()
+
+if config.watsonx_type == "ga":
+    # Create Starcoder chain
+    llm = WatsonxLangchainLLM(
+        model_id=ModelTypes.LLAMA_2_70B_CHAT.value,
+        generate_params={
+            GenParams.DECODING_METHOD: "greedy",
+            GenParams.MAX_NEW_TOKENS: 200,
+        },
+    ).from_pretrained()
+
+if config.watsonx_type == "workbench":
+    llm = WatsonxWorkbenchLangchainLLM(
+        model_id="meta-llama/llama-2-13b-chat",
+        generate_params={
+            GenParams.DECODING_METHOD: "greedy",
+            GenParams.MAX_NEW_TOKENS: 200,
+            "stream": True,
+        },
+    ).from_pretrained()
 
 store = VectorStore("assets/ibmfaqs.pdf")
 
