@@ -1,0 +1,9 @@
+*.db
+*.py[cod]
+.env
+.web
+CustomRAG.ipynb
+__pycache__/
+assets/vectorstore/
+assets/whispervectorstore/
+node_modules

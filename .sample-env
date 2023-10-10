@@ -1,0 +1,12 @@
+# Specify GA or workbench/BAM - options (ga, workbench)
+watsonx_type = "workbench"  
+# IAM API key for GA, Standard APIkey for workbench
+watsonx_api_key = ""
+# Depends if using GA or Workbench
+watsonx_api_endpoint= "https://us-south.ml.cloud.ibm.com"  
+# Optional - not needed if using workbench
+watsonx_project_id =  ""
+# Workbench/BAM API KEY
+watsonx_workbench_api_key = ""
+# Depends if using GA or Workbench - options('https://bam-api.res.ibm.com', 'https://workbench-api.res.ibm.com')
+watsonx_workbench_api_endpoint = "https://bam-api.res.ibm.com"
