@@ -4,7 +4,8 @@ Want to learn how to use watsonx for your business. Well this app allows you to 
 
 ## See it live and in action 📺
 
-![GIF Demo](https://i.imgur.com/pejVjcu.gif)
+<!-- ![GIF Demo](https://i.imgur.com/pejVjcu.gif) -->
+<img src="https://i.imgur.com/pejVjcu.gif" width="480" height="310.5" />
 
 # Startup 🚀
 
