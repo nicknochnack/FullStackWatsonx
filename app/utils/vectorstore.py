@@ -18,7 +18,10 @@ class VectorStore(BaseModel):
         super().__init__(**kwargs)
 
         client = chromadb.PersistentClient(path=persist_store)
-        client.delete_collection(self.collection_name)
+        try: 
+            client.delete_collection(self.collection_name)
+        except Exception as e: 
+            pass   
         collection = client.create_collection(name=self.collection_name, metadata={"hnsw:space": "cosine"})
 
         chunks = self.chunk_file(file_path, self.chunk_size, self.chunk_overlap)
