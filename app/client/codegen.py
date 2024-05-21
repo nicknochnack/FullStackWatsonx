@@ -19,9 +19,9 @@ from app.config.state import State
 config = rx.config.get_config()
 
 if config.watsonx_type == "ga":
-    # Create Starcoder chain
+    # Create CodeLlama-34b chain
     llm = WatsonxLangchainLLM(
-        model_id=ModelTypes.STARCODER.value,
+        model_id="codellama/codellama-34b-instruct-hf",
         generate_params={
             GenParams.DECODING_METHOD: "greedy",
             GenParams.MAX_NEW_TOKENS: 200,
